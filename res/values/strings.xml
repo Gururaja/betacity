@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Betacity</string>
+    <string name="action_settings">Settings</string>
+    <string name="whatissue">What is the issue about? *</string>
+    <string name="ward">Which ward does the issue concern?</string>
+    <string name="mandatory">Fields marked with &quot;*&quot; are mandatory</string>
+    <string name="issuetitle">Title of the issue *</string>
+    <string name="describe">Briefly describe the issue</string>
+    <string name="image">Image of the issue</string>
+    <string name="upload">Upload image</string>
+    <string name="campic">Take a picture</string>
+    <string name="email">Your Email *</string>
+    <string name="name">Your Name *</string>
+    <string name="show_email">Show my email id with the issue, so that people can contact me.</string>
+    <string name="report">Report this issue</string>
+
+    <string-array name="topic">
+        <item>Select a topic</item>
+        <item>City Amenities</item>
+        <item>Economy</item>
+        <item>Education</item>
+        <item>Election</item>
+        <item>Environment</item>
+        <item>Health &amp; Sanitation</item>
+        <item>Heritage</item>
+        <item>Housing</item>
+        <item>Lakes</item>
+        <item>Law &amp; Order</item>
+        <item>Poverty</item>
+        <item>Power Supply</item>
+        <item>Road, Traffic &amp; Transport</item>
+        <item>Tourism</item>
+        <item>Water</item>
+    </string-array>
+    <string-array name="ward">
+        <item>Select Ward</item>
+        <item>Bagalakunte</item>
+        <item>Mattikere</item>
+        <item>Peenya Industrial Area</item>
+        <item>Benniganahalli</item>
+        <item>Jeevanbhima Nagar</item>
+        <item>Hagadur</item>
+        <item>Banasavadi</item>
+        <item>Domlur</item>
+        <item>Kottegepalya</item>
+        <item>Laggere</item>
+        <item>Yelahanka Satellite Town</item>
+        <item>Rajamahal Guttahalli</item>
+        <item>Kushal Nagar</item>
+        <item>HBR Layout</item>
+        <item>Chamrajapet</item>
+        <item>Maruthi Seva Nagar</item>
+        <item>Jayamahal</item>
+        <item>Kadugodi</item>
+        <item>Rajaji Nagar</item>
+        <item>Subhash Nagar</item>
+        <item>Okalipuram</item>
+        <item>Vannarpet</item>
+        <item>Konena Agrahara</item>
+        <item>Jakkasandra</item>
+        <item>Vijnana Nagar</item>
+        <item>Vishwanath Nagenahalli</item>
+        <item>K R Puram</item>
+        <item>Ullalu</item>
+        <item>Shanthi Nagar</item>
+        <item>Shantala Nagar</item>
+        <item>Dayananda Nagar</item>
+        <item>Garudachar Playa</item>
+        <item>Lakshmi Devi Nagar</item>
+        <item>Yeshwanthpura</item>
+        <item>Chowdeswari Ward</item>
+        <item>Ganga Nagar</item>
+        <item>Nagapura</item>
+        <item>Hebbala</item>
+        <item>Herohalli</item>
+        <item>Sriramamandir</item>
+        <item>Jagajivanaramnagar</item>
+        <item>Kamakshipalya</item>
+        <item>Kempegowda Ward</item>
+        <item>Jayachamarajendra Nagar</item>
+        <item>Kadu Malleshwar Ward</item>
+        <item>Kammanahalli</item>
+        <item>Nilasandra</item>
+        <item>Prakash Nagar</item>
+        <item>Agaram</item>
+        <item>Azad Nagar</item>
+        <item>Kadugondanahalli</item>
+        <item>Nagavara</item>
+        <item>Rajarajeshwari Nagar</item>
+        <item>HMT Ward</item>
+        <item>Jalahalli</item>
+        <item>Atturu</item>
+        <item>Vidyaranyapura</item>
+        <item>Thanisandra</item>
+        <item>Bharathi Nagar</item>
+        <item>Dattatreya Temple</item>
+        <item>Gandhinagar</item>
+        <item>Halsoor</item>
+        <item>Marathahalli</item>
+        <item>Lingarajapura</item>
+        <item>J P Park</item>
+        <item>Mallasandra</item>
+        <item>Radhakrishna Temple Ward</item>
+        <item>T Dasarahalli</item>
+        <item>Devasandra</item>
+        <item>Ramaswamy Palya</item>
+        <item>Shivaji Nagar</item>
+        <item>Basaveshwara Nagar</item>
+        <item>Kacharkanahalli</item>
+        <item>Rayapuram</item>
+        <item>Vrisabhavathi Nagar</item>
+        <item>Chokkasandra</item>
+        <item>Shivanagara</item>
+        <item>Binnipete</item>
+        <item>Sampangiram Nagar</item>
+        <item>Basavanapura</item>
+        <item>Subramanya Nagar</item>
+        <item>Varthuru</item>
+        <item>Hoysala Nagar</item>
+        <item>Sarvagna Nagar</item>
+        <item>Cottonpete</item>
+        <item>Padarayanapura</item>
+        <item>Anjanapura</item>
+        <item>Begur</item>
+        <item>Gottigere</item>
+        <item>Yelchenahalli</item>
+        <item>Basavanagudi</item>
+        <item>HAL Airport</item>
+        <item>Hudi</item>
+        <item>Bellanduru</item>
+        <item>Chickpete</item>
+        <item>Jnana Bharathi ward</item>
+        <item>Uttarahalli</item>
+        <item>Konankunte</item>
+        <item>Hemmigepura</item>
+        <item>Marappana Palya</item>
+        <item>Pulikeshinagar</item>
+        <item>New Tippasandara</item>
+        <item>Vasanthpura</item>
+        <item>Dodda Nekkundi</item>
+        <item>Jogupalya</item>
+        <item>Byrasandra</item>
+        <item>Hombegowda Nagara</item>
+        <item>Mudalapalya</item>
+        <item>Attiguppe</item>
+        <item>Nayandahalli</item>
+        <item>Vijayanagar</item>
+        <item>Dharmaraya Swamy Temple</item>
+        <item>Vidyapeeta ward</item>
+        <item>Sudham Nagara</item>
+        <item>Dr. Raj Kumar Ward</item>
+        <item>Hampi Nagar</item>
+        <item>Padmanabha Nagar</item>
+        <item>Gali Anjenaya Temple ward</item>
+        <item>Karisandra</item>
+        <item>Katriguppe</item>
+        <item>Lakkasandra</item>
+        <item>Vishveshwara Puram</item>
+        <item>Bilekhalli</item>
+        <item>Mangammanapalya</item>
+        <item>Pattabhiram Nagar</item>
+        <item>BTM Layout</item>
+        <item>Deepanjali Nagar</item>
+        <item>Gurappanapalya</item>
+        <item>Sunkenahalli</item>
+        <item>Maruthi Mandir ward</item>
+        <item>Nagarabhavi</item>
+        <item>Adugodi</item>
+        <item>Agrahara Dasarahalli</item>
+        <item>Bapuji Nagar</item>
+        <item>Ejipura</item>
+        <item>Hosahalli</item>
+        <item>Jayanagar East</item>
+        <item>Yediyur</item>
+        <item>Hanumanth Nagar</item>
+        <item>Jaraganahalli</item>
+        <item>Srinagar</item>
+        <item>Marenahalli</item>
+        <item>Shakambari Nagar</item>
+        <item>Sarakki</item>
+        <item>Banashankari Temple ward</item>
+        <item>Siddapura</item>
+        <item>Hosakerehalli</item>
+        <item>Ganesh Mandir ward</item>
+        <item>Chikkalsandra</item>
+        <item>J P Nagar</item>
+        <item>Kaveripura</item>
+        <item>Kumaraswamy Layout</item>
+        <item>Puttenahalli</item>
+        <item>Arakere</item>
+        <item>Jayanagar</item>
+        <item>Bommanahalli</item>
+        <item>Hongasandra</item>
+        <item>HSR Layout</item>
+        <item>Singasandra</item>
+        <item>Govindaraja Nagar</item>
+        <item>Koramangala</item>
+        <item>Suddagunte Palya</item>
+        <item>Girinagar</item>
+        <item>Kempapura Agrahara</item>
+        <item>Madivala</item>
+        <item>Dodda Bommasandra</item>
+        <item>Hegganahalli</item>
+        <item>Horamavu</item>
+        <item>Kuvempu Nagar</item>
+        <item>Byatarayanapura</item>
+        <item>Kaval Bairasandra</item>
+        <item>Kodigehalli</item>
+        <item>Shettihalli</item>
+        <item>Vijnanapura</item>
+        <item>A Narayanapura</item>
+        <item>Gangenahalli</item>
+        <item>Mahalakshimpuram</item>
+        <item>Rajagopal Nagar</item>
+        <item>Sanjaya Nagar</item>
+        <item>Shankar Matt</item>
+        <item>Malleswaram</item>
+        <item>Nandini Layout</item>
+        <item>Ramamurthy Nagar</item>
+        <item>Shakthi Ganapathi Nagar</item>
+        <item>Dodda Bidarakallu</item>
+        <item>Gayithri Nagar</item>
+        <item>Jakkuru</item>
+        <item>Manorayanapalya</item>
+        <item>Muneshwara Nagar</item>
+        <item>Sagayarapuram</item>
+        <item>S K Garden</item>
+        <item>Kengeri</item>
+        <item>Aramane Nagara</item>
+        <item>Devara Jeevanahalli</item>
+        <item>Chalavadipalya</item>
+        <item>K R Market</item>
+        <item>Vasanth Nagar</item>
+        <item>C V Raman Nagar</item>
+    </string-array>
+
+    <string name="title_activity_report_issue">ReportIssueActivity</string>
+    <string name="hello_world">Hello world!</string>
+
+</resources>
