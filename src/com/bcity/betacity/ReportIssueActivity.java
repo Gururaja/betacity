@@ -1,17 +1,16 @@
 package com.bcity.betacity;
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.URI;
+import java.net.MalformedURLException;
+import java.net.URL;
 
-import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.ResponseHandler;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
@@ -19,9 +18,7 @@ import android.app.Activity;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
-import android.util.Log;
 import android.view.MenuItem;
-import android.widget.TextView;
 
 public class ReportIssueActivity extends Activity {
 	
@@ -32,77 +29,24 @@ public class ReportIssueActivity extends Activity {
 		setContentView(R.layout.activity_report_issue);
 		Bundle intent = getIntent().getExtras();
 		
-		String url = "http://bcity.in:4466/api/v1/issues";
+		// String url = "http://bcity.in:4466/api/v1/issues";
 		
 		
 		
-	/*	try {
+	try {
 			URL path = new URL("http://bcity.in:4466/api/v1/issues");
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	*/		
+			
 		// Show the Up button in the action bar.
 		setupActionBar();
 	
 	}	
 	
-		// get json through httpget
-	public static JSONArray getJSONfromURL(String url){
-		InputStream is = null;
-		String result = "";
-		JSONArray jArray = null;
-		
-		//http get method
-	    try{
-	            HttpClient httpclient = new DefaultHttpClient();
-	            HttpGet httpget = new HttpGet(url);
-	            HttpResponse response = httpclient.execute(httpget);
-	            HttpEntity entity = response.getEntity();
-	            is = entity.getContent();
-
-	    }catch(Exception e){
-	            Log.e("log_tag", "Error in http connection "+e.toString());
-	    }
-	    
-	  //convert response to string
-	    try{
-	            BufferedReader reader = new BufferedReader(new InputStreamReader(is,"iso-8859-1"),8);
-	            StringBuilder sb = new StringBuilder();
-	            String line = null;
-	            while ((line = reader.readLine()) != null) {
-	                    sb.append(line + "\n");
-	            }
-	            is.close();
-	            result=sb.toString();
-	    }catch(Exception e){
-	            Log.e("log_tag", "Error converting result "+e.toString());
-	    }
-	    
-	    try{
-	    	
-            jArray = new JSONArray(result);            
-            String viewer = jArray.toString();
-	    }catch(JSONException e){
-	            Log.e("log_tag", "Error parsing data "+e.toString());
-	    }
-    
-	    return jArray;
-	    
-	
-	}
-	
-	public void View(String viewer){
-		String se =  new String(viewer.toString());
-   		TextView textView = new TextView(this);
-		textView.setTextSize(40);
-		textView.setText(se);
-		
-		setContentView(textView);
-	}
-	
-/*	public static String getStringContent(String uri) throws Exception {
+/*
+	public static String getStringContent(String uri) throws Exception {
 
 	    try {
 	        HttpClient client = new DefaultHttpClient();
@@ -131,7 +75,7 @@ public class ReportIssueActivity extends Activity {
 	        } 
 	    
 	    finally {
-	               // any cleanup code...
+	
 	            }
 	           
 	} 
@@ -144,8 +88,10 @@ public class ReportIssueActivity extends Activity {
 		
 		setContentView(textView);
 	}
+
+*/
 	
-/*	public void writeJSON() {
+	public void writeJSON() {
 		JSONObject object = new JSONObject();
 		    try {
 		    	object.put("issue_type_id", " ");
@@ -162,16 +108,8 @@ public class ReportIssueActivity extends Activity {
 		   		}
 		   		System.out.println(object);
 		   		
-/*		   		String se =  new String(object.toString());
-		   		TextView textView = new TextView(this);
-				textView.setTextSize(40);
-				textView.setText(se);
-				
-				setContentView(textView);
-		   		// json.put("url",http://bcity.in:4466/api/issues);
-*/
+	}
 
-/*	
 	public static  HttpResponse makeRequest(URL path, JSONObject object) throws Exception {
 			
 			DefaultHttpClient httpclient = new DefaultHttpClient();
@@ -185,7 +123,6 @@ public class ReportIssueActivity extends Activity {
 			ResponseHandler responsehandler = new BasicResponseHandler();
 			return httpclient.execute(httppost, responsehandler); 
 	}
-*/	
 	
 /*	public void postData(URL path, JSONObject object){
 		// Create a new HttpClient and Post Header
