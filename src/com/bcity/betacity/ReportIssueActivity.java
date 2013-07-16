@@ -4,10 +4,9 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import org.apache.http.HttpResponse;
-import org.apache.http.client.ResponseHandler;
+import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -29,17 +28,21 @@ public class ReportIssueActivity extends Activity {
 		setContentView(R.layout.activity_report_issue);
 		Bundle intent = getIntent().getExtras();
 		
-		// String url = "http://bcity.in:4466/api/v1/issues";
-		
-		
-		
-	try {
+		try {
 			URL path = new URL("http://bcity.in:4466/api/v1/issues");
+			
+			makeRequest(path, writeJSON());
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-			
+		
+		// Create the JSON object
+		// Make HTTP request
+		
 		// Show the Up button in the action bar.
 		setupActionBar();
 	
@@ -91,37 +94,41 @@ public class ReportIssueActivity extends Activity {
 
 */
 	
-	public void writeJSON() {
+	public JSONObject writeJSON() {
 		JSONObject object = new JSONObject();
 		    try {
-		    	object.put("issue_type_id", " ");
-		  		object.put("location", MainActivity.issueward );
-		   		object.put("title", MainActivity.title );
-		   		object.put("user_email", MainActivity.user_email);
-		   		object.put("user_name", MainActivity.user_name);
-		   		object.put("desc", MainActivity.desc);
-		   		object.put("topic_id", MainActivity.issuetopic);
+		    	object.put("issue_type_id", "76");
+		  		object.put("location", "Koramangala" );
+		   		object.put("title", "Issue title" );
+		   		object.put("user_email", "useremail@gmail.com");
+		   		object.put("user_name", "User name");
+		   		object.put("desc", "Issue description");
+		   		object.put("topic_id", "13");
 		   		object.put("city_id", "1");
 		   		} 
 		   	catch (JSONException e) {
 		   		    e.printStackTrace();
 		   		}
 		   		System.out.println(object);
-		   		
+		return object;
 	}
 
-	public static  HttpResponse makeRequest(URL path, JSONObject object) throws Exception {
+	public static void makeRequest(URL path, JSONObject object) throws Exception {
 			
-			DefaultHttpClient httpclient = new DefaultHttpClient();
-			HttpPost httppost = new HttpPost(path.toURI());
+			HttpClient httpclient = new DefaultHttpClient();
+			HttpPost httppost = new HttpPost("http://bcity.in:4466/api/v1/issues");
 			StringEntity  se =  new StringEntity(object.toString());
+			HttpResponse response = null;
 			
 			httppost.setEntity(se);
-			httppost.setHeader("Accept", "application/json");
-			httppost.setHeader("Content-type", "application/json");
+//			httppost.setHeader("Accept", "application/json");
+			httppost.addHeader("content-type", "application/json");
 			
-			ResponseHandler responsehandler = new BasicResponseHandler();
-			return httpclient.execute(httppost, responsehandler); 
+			response = httpclient.execute(httppost);
+			response.getEntity().consumeContent();
+			
+//			ResponseHandler responsehandler = new BasicResponseHandler();
+//			return httpclient.execute(httppost, responsehandler);
 	}
 	
 /*	public void postData(URL path, JSONObject object){
@@ -152,7 +159,7 @@ public class ReportIssueActivity extends Activity {
 	    } catch (IOException e) {
 	    }
 	}
-	
+*/	
 	
 	/**
 	 * Set up the {@link android.app.ActionBar}, if the API is available.
