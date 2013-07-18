@@ -238,5 +238,6 @@
 
     <string name="title_activity_report_issue">ReportIssueActivity</string>
     <string name="hello_world">Hello world!</string>
+    <string name="title_activity_jsonparser">JSONParser</string>
 
 </resources>

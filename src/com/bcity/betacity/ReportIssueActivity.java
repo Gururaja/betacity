@@ -1,5 +1,7 @@
 package com.bcity.betacity;
 
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -14,10 +16,14 @@ import org.json.JSONObject;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.view.MenuItem;
+import android.widget.TextView;
+
+
 
 public class ReportIssueActivity extends Activity {
 	
@@ -27,11 +33,13 @@ public class ReportIssueActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_report_issue);
 		Bundle intent = getIntent().getExtras();
-		
+					
 		try {
 			URL path = new URL("http://bcity.in:4466/api/v1/issues");
 			
-			makeRequest(path, writeJSON());
+			PostReport report = new PostReport();
+			report.execute();
+			
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -39,14 +47,13 @@ public class ReportIssueActivity extends Activity {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		// Create the JSON object
-		// Make HTTP request
-		
+				
 		// Show the Up button in the action bar.
 		setupActionBar();
 	
 	}	
+		
+	
 	
 /*
 	public static String getStringContent(String uri) throws Exception {
@@ -94,7 +101,8 @@ public class ReportIssueActivity extends Activity {
 
 */
 	
-	public JSONObject writeJSON() {
+	
+	/*public JSONObject writeJSON() {
 		JSONObject object = new JSONObject();
 		    try {
 		    	object.put("issue_type_id", "76");
@@ -111,13 +119,69 @@ public class ReportIssueActivity extends Activity {
 		   		}
 		   		System.out.println(object);
 		return object;
-	}
+	}*/
+	
 
-	public static void makeRequest(URL path, JSONObject object) throws Exception {
+	/*AsyncHttpClient client = new AsyncHttpClient();
+	client.get("http://www.google.com", new AsyncHttpResponseHandler() {
+	    @Override
+	    public void onSuccess(String response) {
+	
+	    	
+	    	
+	    	System.out.println(response);
+	    }
+	});
+*/
+
+	/*		protected void makeRequest(URL path, JSONObject object) throws Exception {
+	
+	HttpClient httpclient = new DefaultHttpClient();
+	HttpPost httppost = new HttpPost("http://bcity.in:4466/api/v1/issues");
+	StringEntity  se =  new StringEntity(object.toString());
+	HttpResponse response = null;
+	
+	httppost.setEntity(se);
+//	httppost.setHeader("Accept", "application/json");
+	httppost.addHeader("content-type", "application/json");
+	
+	response = httpclient.execute(httppost);
+	response.getEntity().consumeContent();
+	}
+*/			
+
+	
+	private class PostReport extends  AsyncTask<String, Void, String> {
+		
+	
+		
+		@Override
+		protected String doInBackground(String...strings){
+			String posted = "Issue has been reported";
+			
+			JSONObject object1 = new JSONObject();
+		    try {
+		    	object1.put("issue_type_id", "76");
+		  		object1.put("location", "Koramangala" );
+		   		object1.put("title", "Issue title" );
+		   		object1.put("user_email", "useremail@gmail.com");
+		   		object1.put("user_name", "User name");
+		   		object1.put("desc", "Issue description");
+		   		object1.put("topic_id", "13");
+		   		object1.put("city_id", "1");
+		   		} 
+		   	catch (JSONException e) {
+		   		    e.printStackTrace();
+		   		}
+		   		System.out.println(object1);
+		
 			
 			HttpClient httpclient = new DefaultHttpClient();
 			HttpPost httppost = new HttpPost("http://bcity.in:4466/api/v1/issues");
-			StringEntity  se =  new StringEntity(object.toString());
+			StringEntity se;
+			try {
+				se = new StringEntity(object1.toString());
+			
 			HttpResponse response = null;
 			
 			httppost.setEntity(se);
@@ -126,41 +190,35 @@ public class ReportIssueActivity extends Activity {
 			
 			response = httpclient.execute(httppost);
 			response.getEntity().consumeContent();
+			} catch (UnsupportedEncodingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return posted;
+			}
+	
+		@Override
+		@SuppressLint("NewApi")
+		protected void onPostExecute(String posted) { 
 			
-//			ResponseHandler responsehandler = new BasicResponseHandler();
-//			return httpclient.execute(httppost, responsehandler);
+			TextView txt = (TextView) findViewById(R.id.posted);
+	        txt.setText(posted);
+			
+			
+			
+			/*Notification noti = new Notification.Builder(getBaseContext())
+	         .setContentTitle("Thank you")
+	         .setContentText(posted)
+	         .build();*/
+
+			}
 	}
+			
 	
-/*	public void postData(URL path, JSONObject object){
-		// Create a new HttpClient and Post Header
 
-	    HttpParams myParams = new BasicHttpParams();
-	    HttpConnectionParams.setConnectionTimeout(myParams, 10000);
-	    HttpConnectionParams.setSoTimeout(myParams, 10000);
-	    HttpClient httpclient = new DefaultHttpClient(myParams);
-	    String json=object.toString();
-
-	    try {
-
-	        HttpPost httppost = new HttpPost(path.toString());
-	        httppost.setHeader("Content-type", "application/json");
-
-	        StringEntity se = new StringEntity(object.toString()); 
-	        se.setContentEncoding(new BasicHeader(HTTP.CONTENT_TYPE, "application/json"));
-	        httppost.setEntity(se); 
-
-	        HttpResponse response = httpclient.execute(httppost);
-	        String temp = EntityUtils.toString(response.getEntity());
-	        Log.i("tag", temp);
-
-
-	    } catch (ClientProtocolException e) {
-
-	    } catch (IOException e) {
-	    }
-	}
-*/	
-	
 	/**
 	 * Set up the {@link android.app.ActionBar}, if the API is available.
 	 */
@@ -181,7 +239,6 @@ public class ReportIssueActivity extends Activity {
 		return true;
 	}
 */
-	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {

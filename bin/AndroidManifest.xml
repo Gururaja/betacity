@@ -29,6 +29,10 @@
             android:name="com.bcity.betacity.ReportIssueActivity"
             android:label="@string/title_activity_report_issue" >
         </activity>
+        <activity
+            android:name="com.bcity.betacity.JSONParser"
+            android:label="@string/title_activity_jsonparser" >
+        </activity>
     </application>
 
 </manifest>

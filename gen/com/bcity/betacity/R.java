@@ -32,7 +32,7 @@ public final class R {
     }
     public static final class id {
         public static final int TextView01=0x7f0a0003;
-        public static final int action_settings=0x7f0a0012;
+        public static final int action_settings=0x7f0a0013;
         public static final int button1=0x7f0a0009;
         public static final int button2=0x7f0a000a;
         public static final int checkBox1=0x7f0a000f;
@@ -40,6 +40,7 @@ public final class R {
         public static final int emailText=0x7f0a000c;
         public static final int issuespinner=0x7f0a0001;
         public static final int nameText=0x7f0a000e;
+        public static final int posted=0x7f0a0012;
         public static final int reportbutton=0x7f0a0010;
         public static final int textView1=0x7f0a0011;
         public static final int textView2=0x7f0a0000;
@@ -52,12 +53,14 @@ public final class R {
         public static final int wardspinner=0x7f0a0004;
     }
     public static final class layout {
-        public static final int activity_main=0x7f030000;
-        public static final int activity_report_issue=0x7f030001;
+        public static final int activity_jsonparser=0x7f030000;
+        public static final int activity_main=0x7f030001;
+        public static final int activity_report_issue=0x7f030002;
     }
     public static final class menu {
-        public static final int main=0x7f090000;
-        public static final int report_issue=0x7f090001;
+        public static final int jsonparser=0x7f090000;
+        public static final int main=0x7f090001;
+        public static final int report_issue=0x7f090002;
     }
     public static final class string {
         public static final int action_settings=0x7f060001;
@@ -72,6 +75,7 @@ public final class R {
         public static final int name=0x7f06000b;
         public static final int report=0x7f06000d;
         public static final int show_email=0x7f06000c;
+        public static final int title_activity_jsonparser=0x7f060010;
         public static final int title_activity_report_issue=0x7f06000e;
         public static final int upload=0x7f060008;
         public static final int ward=0x7f060003;
