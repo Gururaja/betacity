@@ -32,10 +32,10 @@ public class ReportIssueActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_report_issue);
-		Bundle intent = getIntent().getExtras();
+		getIntent().getExtras();
 					
 		try {
-			URL path = new URL("http://bcity.in:4466/api/v1/issues");
+			new URL("http://bcity.in:4466/api/v1/issues");
 			
 			PostReport report = new PostReport();
 			report.execute();
@@ -54,122 +54,41 @@ public class ReportIssueActivity extends Activity {
 	}	
 		
 	
-	
-/*
-	public static String getStringContent(String uri) throws Exception {
-
-	    try {
-	        HttpClient client = new DefaultHttpClient();
-	        HttpGet request = new HttpGet();
-	        request.setURI(new URI(uri));
-	        HttpResponse response = client.execute(request);
-	        InputStream ips  = response.getEntity().getContent();
-	        BufferedReader buf = new BufferedReader(new InputStreamReader(ips,"UTF-8"));
-
-	        StringBuilder sb = new StringBuilder();
-	        String s;
-	        while(true )
-	        {
-	            s = buf.readLine();
-	            if(s==null || s.length()==0)
-	                break;
-	            sb.append(s);
-
-	        }
-	        buf.close();
-	        ips.close();
-	        String viewer = new String(sb.toString());
-	        return sb.toString();
- 	            
-	        
-	        } 
-	    
-	    finally {
-	
-	            }
-	           
-	} 
-	
-	public void View(String viewer){
-		String se =  new String(viewer.toString());
-   		TextView textView = new TextView(this);
-		textView.setTextSize(40);
-		textView.setText(se);
-		
-		setContentView(textView);
-	}
-
-*/
-	
-	
-	/*public JSONObject writeJSON() {
-		JSONObject object = new JSONObject();
-		    try {
-		    	object.put("issue_type_id", "76");
-		  		object.put("location", "Koramangala" );
-		   		object.put("title", "Issue title" );
-		   		object.put("user_email", "useremail@gmail.com");
-		   		object.put("user_name", "User name");
-		   		object.put("desc", "Issue description");
-		   		object.put("topic_id", "13");
-		   		object.put("city_id", "1");
-		   		} 
-		   	catch (JSONException e) {
-		   		    e.printStackTrace();
-		   		}
-		   		System.out.println(object);
-		return object;
-	}*/
-	
-
-	/*AsyncHttpClient client = new AsyncHttpClient();
-	client.get("http://www.google.com", new AsyncHttpResponseHandler() {
-	    @Override
-	    public void onSuccess(String response) {
-	
-	    	
-	    	
-	    	System.out.println(response);
-	    }
-	});
-*/
-
-	/*		protected void makeRequest(URL path, JSONObject object) throws Exception {
-	
-	HttpClient httpclient = new DefaultHttpClient();
-	HttpPost httppost = new HttpPost("http://bcity.in:4466/api/v1/issues");
-	StringEntity  se =  new StringEntity(object.toString());
-	HttpResponse response = null;
-	
-	httppost.setEntity(se);
-//	httppost.setHeader("Accept", "application/json");
-	httppost.addHeader("content-type", "application/json");
-	
-	response = httpclient.execute(httppost);
-	response.getEntity().consumeContent();
-	}
-*/			
-
-	
 	private class PostReport extends  AsyncTask<String, Void, String> {
-		
-	
 		
 		@Override
 		protected String doInBackground(String...strings){
 			String posted = "Issue has been reported";
 			
 			JSONObject object1 = new JSONObject();
+			JSONObject issue = new JSONObject();
+			JSONObject coordinate_pair_attributes = new JSONObject();
+			JSONObject picture = new JSONObject();
+			
 		    try {
-		    	object1.put("issue_type_id", "76");
-		  		object1.put("location", "Koramangala" );
-		   		object1.put("title", "Issue title" );
-		   		object1.put("user_email", "useremail@gmail.com");
-		   		object1.put("user_name", "User name");
-		   		object1.put("desc", "Issue description");
-		   		object1.put("topic_id", "13");
-		   		object1.put("city_id", "1");
-		   		} 
+		    	
+		    	picture.put("filename", "");
+		    	picture.put("data", "");
+		    	
+		    	coordinate_pair_attributes.put("lon", MainActivity.LON);
+		   		coordinate_pair_attributes.put("lat", MainActivity.LAT);
+		   		
+		    	issue.put("issue_type_id", MainActivity.ISSUETYPEID);
+		  		issue.put("ward_name", MainActivity.WARD);
+		  		issue.put("ward_id", MainActivity.WARDID);
+		   		issue.put("title", MainActivity.title);
+		   		issue.put("user_email", MainActivity.user_email);
+		   		issue.put("user_name", MainActivity.user_name);
+		   		issue.put("desc", MainActivity.desc);
+		   		issue.put("topic_id", MainActivity.ISSUEID);
+		   		issue.put("city_id", MainActivity.CITYID);
+		   		issue.put("coordinate_pair_attributes", coordinate_pair_attributes);
+		   		
+		   		object1.put("token", "sCNMh7Tx2QCw4z96QUgB");
+		   		object1.put("issue", issue);
+		   		object1.put("picture", picture);
+		   		
+		    	} 
 		   	catch (JSONException e) {
 		   		    e.printStackTrace();
 		   		}
@@ -207,22 +126,12 @@ public class ReportIssueActivity extends Activity {
 			TextView txt = (TextView) findViewById(R.id.posted);
 	        txt.setText(posted);
 			
-			
-			
-			/*Notification noti = new Notification.Builder(getBaseContext())
-	         .setContentTitle("Thank you")
-	         .setContentText(posted)
-	         .build();*/
-
 			}
 	}
-			
-	
 
 	/**
 	 * Set up the {@link android.app.ActionBar}, if the API is available.
 	 */
-	
 	
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	private void setupActionBar() {
