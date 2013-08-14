@@ -348,12 +348,7 @@ public class MainActivity extends Activity {
 	{
 		Toast.makeText(this, "" + msg, Toast.LENGTH_LONG).show();
 	}
-	
-/*	public void add_image (View v) {
-			Intent intent = new Intent(this, UploadImage.class);
-		startActivity(intent);
-	}
-*/
+
 	public void report_issue (View view) {
     	
     	Intent intent = new Intent(this, ReportIssueActivity.class);

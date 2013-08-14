@@ -37,47 +37,6 @@ public class UploadImage extends Activity {
 	super.onActivityResult(requestCode, resultCode, data);
 	
 	if (requestCode == GALLERY_PICTURE && null != data ) {
-/*		Uri selectedImage = data.getData();
-		String[] filePathColumn = {MediaStore.Images.Media.DATA };
-		
-		Cursor cursor = getContentResolver().query(selectedImage, filePathColumn, null, null, null);
-		cursor.moveToFirst();
-		
-		int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-		String picturePath = cursor.getString(columnIndex);
-		cursor.close();
-		
-		userPictureImageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
-		setResult(RESULT_OK);
-		Bitmap bm = BitmapFactory.decodeFile(picturePath);
-		ByteArrayOutputStream baos = new ByteArrayOutputStream();  
-		bm.compress(Bitmap.CompressFormat.JPEG, 100, baos); //bm is the bitmap object   
-		byte[] b = baos.toByteArray(); 
-		encodedImage = Base64.encodeToString(b, Base64.DEFAULT);
-*/		
-		/*		if (bitmap != null) {
-				bitmap.recycle();
-			}
-			try {
-				stream = getContentResolver().openInputStream(data.getData());
-				bitmap = BitmapFactory.decodeStream(stream);	
-				userPictureImageView.setImageBitmap(bitmap);
-			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} finally {
-				if (stream != null) {
-					try {
-						stream.close();
-					} catch (IOException e) {
-						e.printStackTrace();
-					}
-				}
-				
-				
-			}
-		 */
-
 			Uri uri = data.getData();
 		if (uri != null) {
 			//user had pick an image.
@@ -112,17 +71,9 @@ public class UploadImage extends Activity {
 			byte[] b = baos.toByteArray(); 
 			encodedImage = Base64.encodeToString(b, Base64.DEFAULT);
 	} 
-	//this.finish();
+	
 } 
 
-/*	public static boolean isIntentAvailable(Context context, String action) {
-		final PackageManager packageManager = context.getPackageManager();
-		final Intent intent = new Intent(action);
-		List<ResolveInfo> list =
-				packageManager.queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY);
-		return list.size() > 0;
-	}
-*/
 	private void startDialog() {
 		AlertDialog.Builder myalertDialog = new AlertDialog.Builder(this);
 		myalertDialog.setTitle("Upload Picture Options");
