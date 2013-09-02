@@ -17,7 +17,9 @@
     <string name="report">Report this issue</string>
     <string name="what_issue_type">Pick a category that best describes your issue.</string>
     <string name="addimage">Add Image</string>
+    <string name="done">Done</string>
 	<string name="cannot">Cannot</string>
+	<string name="posting_report_status">Issue is being posted</string>
 	
     
     <string name="title_activity_report_issue">ReportIssueActivity</string>
